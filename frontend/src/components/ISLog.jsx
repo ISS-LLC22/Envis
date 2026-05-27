@@ -36,6 +36,7 @@ export default function ISLog() {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchData(); }, [filter]);
 
   const handleUpdate = async () => {

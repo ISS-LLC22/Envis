@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wand2, AlertCircle, CheckCircle, BookOpen, Search } from 'lucide-react';
+import { Wand2, AlertCircle, CheckCircle, BookOpen } from 'lucide-react';
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 

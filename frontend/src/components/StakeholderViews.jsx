@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, ChevronRight } from 'lucide-react';
+import { Users } from 'lucide-react';
 
 const API = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 

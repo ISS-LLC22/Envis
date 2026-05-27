@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Terminal, Code2, BookOpen, Layers, Cpu, GitBranch } from 'lucide-react';
+import { Terminal, Layers, Cpu, GitBranch } from 'lucide-react';
 
 export default function ClaudeCodeTab() {
   const [activeSection, setActiveSection] = useState('architecture');

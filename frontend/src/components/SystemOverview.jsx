@@ -179,7 +179,6 @@ function ISLogPerformanceCard({ data, loading }) {
   const hits = data?.hits || 0;
   const misses = data?.misses || 0;
   const pending = data?.pending || 0;
-  const total = data?.total_entries || 0;
 
   return (
     <div className="envis-card">
