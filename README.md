@@ -34,12 +34,11 @@ CREATE DATABASE envis;
 ### 3. Backend
 
 ```bash
-cd backend
-pip install -r requirements.txt
-cp .env.example .env
+pip install -r backend/requirements.txt
+cp .env.template .env
 # Edit .env with your DATABASE_URL and ANTHROPIC_API_KEY
 
-# Run (from project root)
+# Run from the project root
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 ```
 

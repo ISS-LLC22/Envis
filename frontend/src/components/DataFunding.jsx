@@ -8,7 +8,7 @@ const DATA_SOURCES = [
     name: 'NWS Alerts API',
     agency: 'National Weather Service',
     url: 'https://api.weather.gov',
-    status: 'active',
+    status: 'implemented',
     cost: 'Free',
     type: 'API',
     endpoint: '/alerts/active',
@@ -20,7 +20,7 @@ const DATA_SOURCES = [
     name: 'NCEI Storm Events',
     agency: 'National Centers for Environmental Information',
     url: 'https://www.ncdc.noaa.gov/stormevents/',
-    status: 'active',
+    status: 'implemented',
     cost: 'Free',
     type: 'API / CSV',
     endpoint: '/cdo-web/api/v2/data',
@@ -32,7 +32,7 @@ const DATA_SOURCES = [
     name: 'Anthropic Claude API',
     agency: 'Anthropic',
     url: 'https://www.anthropic.com',
-    status: 'active',
+    status: 'implemented',
     cost: 'Pay-per-token',
     type: 'LLM API',
     endpoint: '/v1/messages',
@@ -200,7 +200,7 @@ function DataSourcesPanel({ sources }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <div style={{ display: 'flex', gap: '0.5rem' }}>
-        {['all', 'active', 'planned'].map(f => (
+        {['all', 'implemented', 'planned'].map(f => (
           <button key={f} className={filter === f ? 'btn-primary' : 'btn-secondary'} onClick={() => setFilter(f)} style={{ fontSize: '0.72rem', padding: '0.3rem 0.8rem', textTransform: 'capitalize' }}>
             {f}
           </button>
@@ -214,7 +214,7 @@ function DataSourcesPanel({ sources }) {
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
                   <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '0.9rem' }}>{src.name}</span>
-                  <span className={`badge ${src.status === 'active' ? 'badge-green' : 'badge-amber'}`}>{src.status}</span>
+                  <span className={`badge ${src.status === 'implemented' ? 'badge-green' : 'badge-amber'}`}>{src.status}</span>
                   <span className="badge badge-cyan">{src.type}</span>
                 </div>
                 <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>{src.agency}</div>

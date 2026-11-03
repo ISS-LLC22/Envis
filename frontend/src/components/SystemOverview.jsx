@@ -269,10 +269,10 @@ function ActiveAlertsTable({ alerts, loading }) {
 
 function DataSourcesCard() {
   const sources = [
-    { name: 'NWS Alerts API', url: 'api.weather.gov', status: 'active', color: 'var(--accent-green)' },
-    { name: 'NCEI Storm Events', url: 'ncdc.noaa.gov/stormevents', status: 'active', color: 'var(--accent-green)' },
-    { name: 'Anthropic Claude', url: 'anthropic.com', status: 'active', color: 'var(--accent-green)' },
-    { name: 'PostgreSQL DB', url: 'localhost:5432', status: 'active', color: 'var(--accent-green)' },
+    { name: 'NWS Alerts API', url: 'api.weather.gov', status: 'implemented', color: 'var(--accent-green)' },
+    { name: 'NCEI Storm Events', url: 'ncdc.noaa.gov/stormevents', status: 'implemented', color: 'var(--accent-green)' },
+    { name: 'Anthropic Claude', url: 'anthropic.com', status: 'implemented', color: 'var(--accent-green)' },
+    { name: 'PostgreSQL DB', url: 'DATABASE_URL', status: 'implemented', color: 'var(--accent-green)' },
     { name: 'EPA AQI', url: 'airnowapi.org', status: 'planned', color: 'var(--accent-amber)' },
     { name: 'USGS StreamStats', url: 'streamstats.usgs.gov', status: 'planned', color: 'var(--accent-amber)' },
   ];
@@ -300,30 +300,14 @@ function DataSourcesCard() {
 }
 
 function PlatformHealthCard() {
-  const checks = [
-    { label: 'FastAPI Backend', ok: true },
-    { label: 'PostgreSQL', ok: true },
-    { label: 'NWS Ingest Scheduler', ok: true },
-    { label: 'AI Wizard (Anthropic)', ok: true },
-    { label: 'NCEI Verification', ok: true },
-    { label: 'Stakeholder Router', ok: true },
-  ];
-
   return (
     <div className="envis-card">
       <h3 style={{ fontFamily: 'Syne, sans-serif', fontSize: '0.95rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         <Zap size={16} /> Platform Health
       </h3>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-        {checks.map(c => (
-          <div key={c.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
-            <span style={{ color: 'var(--text-secondary)' }}>{c.label}</span>
-            <span style={{ color: c.ok ? 'var(--accent-green)' : 'var(--accent-red)', fontSize: '0.7rem', fontWeight: 600 }}>
-              {c.ok ? 'ONLINE' : 'OFFLINE'}
-            </span>
-          </div>
-        ))}
-      </div>
+      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+        Runtime availability is not monitored by this dashboard.
+      </p>
     </div>
   );
 }
