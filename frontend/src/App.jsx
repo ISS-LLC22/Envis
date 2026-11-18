@@ -104,32 +104,7 @@ function Header({ activeTab, setActiveTab }) {
           ))}
         </nav>
 
-        <StatusIndicator />
       </div>
     </header>
-  );
-}
-
-function StatusIndicator() {
-  const [status] = useState('live');
-  return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '6px',
-      fontSize: '0.65rem',
-      color: 'var(--text-muted)',
-      flexShrink: 0,
-    }}>
-      <div style={{
-        width: 7,
-        height: 7,
-        borderRadius: '50%',
-        background: status === 'live' ? 'var(--accent-green)' : 'var(--accent-amber)',
-        boxShadow: status === 'live' ? '0 0 6px var(--accent-green)' : 'none',
-        animation: 'pulse 2s infinite',
-      }} />
-      {status.toUpperCase()}
-    </div>
   );
 }
