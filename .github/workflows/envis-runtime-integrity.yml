@@ -1,0 +1,39 @@
+name: Envis runtime truth and frontend acceptance
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  frontend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Install current frontend dependency graph (no committed lock exists)
+        working-directory: frontend
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Execute actual runtime-truth regression
+        working-directory: frontend
+        env:
+          CI: 'true'
+        run: npm test -- --watchAll=false --runInBand
+      - name: Build frontend from exact source
+        working-directory: frontend
+        env:
+          CI: 'true'
+        run: npm run build
+      - name: Audit runtime dependency graph
+        working-directory: frontend
+        run: npm audit --omit=dev --audit-level=high
+      - name: Disclose reproducibility and live limitations
+        if: always()
+        run: |
+          echo 'This verifies a dynamically resolved test graph because the repository has no committed frontend lockfile. Commit and review a lockfile before release; no production service availability or signed live deployment is asserted.' >> "$GITHUB_STEP_SUMMARY"
